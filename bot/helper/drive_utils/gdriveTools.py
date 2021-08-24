@@ -131,24 +131,24 @@ class GoogleDriveHelper:
             INDEX += 1          
             if response:
                 if add_title_msg == True:
-                    msg = f'<h3>Search Results for : {fileName}</h3><br>@AT_BOTs #ProjektX<br><br>'
+                    msg = f'<h3>Search Results for : {fileName}</h3><br>@TNROCKERS2021 #ProjektX<br><br>'
                     add_title_msg = False
                 msg += f"╾────────────╼<br><b>{DRIVE_NAME[INDEX]}</b><br>╾────────────╼<br>"
                 for file in response:
                     if file.get('mimeType') == "application/vnd.google-apps.folder":  # Detect Whether Current Entity is a Folder or File.
                         msg += f"📁<code>{file.get('name')}</code> <b>(folder)</b><br>" \
-                               f"<b><a href='https://drive.google.com/drive/folders/{file.get('id')}'>🌠 Drive Link 🌠</a></b>"
+                               f"<b><a href='https://drive.google.com/drive/folders/{file.get('id')}'>☁️ Drive Link </a></b>"
                         if INDEX_URL[INDEX] is not None:
                             url_path = "/".join([requests.utils.quote(n, safe='') for n in self.get_recursive_list(file, parent_id)])
                             url = f'{INDEX_URL[INDEX]}/{url_path}/'
-                            msg += f'<b> | <a href="{url}">☄️ Index Link ☄️</a></b>'
+                            msg += f'<b> | <a href="{url}">⚡ Index Link </a></b>'
                     else:
                         msg += f"📄<code>{file.get('name')}</code> <b>({self.get_readable_file_size(file.get('size'))})</b><br>" \
-                               f"<b><a href='https://drive.google.com/uc?id={file.get('id')}&export=download'>🌠 Drive Link 🌠</a></b>"
+                               f"<b><a href='https://drive.google.com/uc?id={file.get('id')}&export=download'>☁️ Drive Link </a></b>"
                         if INDEX_URL[INDEX] is not None:
                             url_path = "/".join([requests.utils.quote(n, safe ='') for n in self.get_recursive_list(file, parent_id)])
                             url = f'{INDEX_URL[INDEX]}/{url_path}'
-                            msg += f'<b> | <a href="{url}">☄️ Index Link ☄️</a></b>'
+                            msg += f'<b> | <a href="{url}">⚡ Index Link </a></b>'
                     msg += '<br><br>'
                     content_count += 1
                     if content_count == TELEGRAPHLIMIT :
